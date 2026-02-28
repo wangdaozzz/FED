@@ -1,0 +1,35 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=8, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='exchange_rate.csv', dec_in=8, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=8, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch_wo_Channel_Independence', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=720, root_path='./dataset/exchange_rate/', seq_len=96, stride=8, target='OT', task_id='Exchange', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+w/o CI Model: patch_len=16, stride=8, num_patch=11
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : Exchange_FEDformer_Patch_wo_Channel_Independence_random_modes64_custom_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4496
+val 41
+test 798
+Epoch: 1 cost time: 4.935535907745361
+Epoch: 1, Steps: 140 | Train Loss: 0.9008323 Vali Loss: 3.5257335 Test Loss: 1.1436354
+Validation loss decreased (inf --> 3.525733).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 4.235131502151489
+Epoch: 2, Steps: 140 | Train Loss: 0.6307206 Vali Loss: 3.0695288 Test Loss: 0.7899950
+Validation loss decreased (3.525733 --> 3.069529).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 4.420130729675293
+Epoch: 3, Steps: 140 | Train Loss: 0.6022348 Vali Loss: 3.3176608 Test Loss: 0.8366764
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 4.232184886932373
+Epoch: 4, Steps: 140 | Train Loss: 0.5954400 Vali Loss: 3.2838120 Test Loss: 0.8472738
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 4.270364046096802
+Epoch: 5, Steps: 140 | Train Loss: 0.5908842 Vali Loss: 3.2732038 Test Loss: 0.8396762
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_wo_Channel_Independence_random_modes64_custom_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 798
+test shape: (24, 32, 720, 8) (24, 32, 720, 8)
+test shape: (768, 720, 8) (768, 720, 8)
+mse:0.7899951934814453, mae:0.6988650560379028

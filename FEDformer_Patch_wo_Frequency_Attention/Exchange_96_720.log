@@ -1,0 +1,44 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=8, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='exchange_rate.csv', dec_in=8, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=8, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch_wo_Frequency_Attention', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=720, root_path='./dataset/exchange_rate/', seq_len=96, stride=8, target='OT', task_id='Exchange', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+PatchEmbedding: seq_len=96, patch_len=16, stride=8
+PatchEmbedding: num_patch=11, pad_len=0
+w/o Freq Attn Model: patch_len=16, num_patch=11
+Ablation Info: Replacing FourierBlock with Vanilla FullAttention (Time Domain)
+>>>>>>>start training : Exchange_FEDformer_Patch_wo_Frequency_Attention_random_modes64_custom_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4496
+val 41
+test 798
+Epoch: 1 cost time: 5.579307794570923
+Epoch: 1, Steps: 140 | Train Loss: 0.8324258 Vali Loss: 3.9603078 Test Loss: 1.2284734
+Validation loss decreased (inf --> 3.960308).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 5.478156566619873
+Epoch: 2, Steps: 140 | Train Loss: 0.6342230 Vali Loss: 3.8062871 Test Loss: 0.9495096
+Validation loss decreased (3.960308 --> 3.806287).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 5.608121395111084
+Epoch: 3, Steps: 140 | Train Loss: 0.6130470 Vali Loss: 3.3707974 Test Loss: 0.8406739
+Validation loss decreased (3.806287 --> 3.370797).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 6.2720112800598145
+Epoch: 4, Steps: 140 | Train Loss: 0.6073908 Vali Loss: 3.3342388 Test Loss: 0.8206582
+Validation loss decreased (3.370797 --> 3.334239).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 6.359638452529907
+Epoch: 5, Steps: 140 | Train Loss: 0.6054760 Vali Loss: 3.4212444 Test Loss: 0.8338259
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 6.450893878936768
+Epoch: 6, Steps: 140 | Train Loss: 0.6042645 Vali Loss: 3.4998500 Test Loss: 0.8485190
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 3.125e-06
+Epoch: 7 cost time: 6.281244516372681
+Epoch: 7, Steps: 140 | Train Loss: 0.6032182 Vali Loss: 3.4023452 Test Loss: 0.8262818
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_wo_Frequency_Attention_random_modes64_custom_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 798
+test shape: (24, 32, 720, 8) (24, 32, 720, 8)
+test shape: (768, 720, 8) (768, 720, 8)
+mse:0.8206581473350525, mae:0.6891210079193115

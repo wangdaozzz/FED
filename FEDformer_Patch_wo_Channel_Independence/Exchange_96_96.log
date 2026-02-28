@@ -1,0 +1,51 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=8, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='exchange_rate.csv', dec_in=8, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=8, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch_wo_Channel_Independence', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=96, root_path='./dataset/exchange_rate/', seq_len=96, stride=8, target='OT', task_id='Exchange', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+w/o CI Model: patch_len=16, stride=8, num_patch=11
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : Exchange_FEDformer_Patch_wo_Channel_Independence_random_modes64_custom_ftM_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 5120
+val 665
+test 1422
+Epoch: 1 cost time: 5.661695957183838
+Epoch: 1, Steps: 160 | Train Loss: 0.7709353 Vali Loss: 0.9968144 Test Loss: 0.5289048
+Validation loss decreased (inf --> 0.996814).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 6.110283374786377
+Epoch: 2, Steps: 160 | Train Loss: 0.2386714 Vali Loss: 0.3164921 Test Loss: 0.1596435
+Validation loss decreased (0.996814 --> 0.316492).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 3.998135805130005
+Epoch: 3, Steps: 160 | Train Loss: 0.1780323 Vali Loss: 0.2464200 Test Loss: 0.1344786
+Validation loss decreased (0.316492 --> 0.246420).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 4.02304220199585
+Epoch: 4, Steps: 160 | Train Loss: 0.1584568 Vali Loss: 0.2485509 Test Loss: 0.1343511
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 4.00348162651062
+Epoch: 5, Steps: 160 | Train Loss: 0.1499977 Vali Loss: 0.2330087 Test Loss: 0.1282925
+Validation loss decreased (0.246420 --> 0.233009).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 3.8872125148773193
+Epoch: 6, Steps: 160 | Train Loss: 0.1454756 Vali Loss: 0.2233265 Test Loss: 0.1253987
+Validation loss decreased (0.233009 --> 0.223327).  Saving model ...
+Updating learning rate to 3.125e-06
+Epoch: 7 cost time: 3.9256887435913086
+Epoch: 7, Steps: 160 | Train Loss: 0.1432948 Vali Loss: 0.2298349 Test Loss: 0.1259504
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 1.5625e-06
+Epoch: 8 cost time: 5.361526012420654
+Epoch: 8, Steps: 160 | Train Loss: 0.1422409 Vali Loss: 0.2333502 Test Loss: 0.1276782
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 7.8125e-07
+Epoch: 9 cost time: 3.0561752319335938
+Epoch: 9, Steps: 160 | Train Loss: 0.1419482 Vali Loss: 0.2288011 Test Loss: 0.1259226
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_wo_Channel_Independence_random_modes64_custom_ftM_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1422
+test shape: (44, 32, 96, 8) (44, 32, 96, 8)
+test shape: (1408, 96, 8) (1408, 96, 8)
+mse:0.12539872527122498, mae:0.2698020040988922

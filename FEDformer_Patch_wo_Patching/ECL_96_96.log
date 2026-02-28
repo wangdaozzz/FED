@@ -1,0 +1,38 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=321, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='electricity.csv', dec_in=321, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=321, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=3, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch_wo_Patching', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=96, root_path='./dataset/electricity/', seq_len=96, stride=8, target='OT', task_id='ECL', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+w/o Patching Mode: seq_len=96, enc_modes=48
+fourier enhanced block used!
+modes=48, index=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+>>>>>>>start training : ECL_FEDformer_Patch_wo_Patching_random_modes64_custom_ftM_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 18221
+val 2537
+test 5165
+Traceback (most recent call last):
+  File "run.py", line 175, in <module>
+    main()
+  File "run.py", line 139, in main
+    exp.train(setting)
+  File "/home/gzx/FEDformer-master/exp/exp_main.py", line 146, in train
+    outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/models/FEDformer_Patch_wo_Patching.py", line 118, in forward
+    enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 140, in forward
+    x, attn = attn_layer(x, attn_mask=attn_mask)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 111, in forward
+    x, _ = self.decomp1(x)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 70, in forward
+    moving_mean = torch.sum(moving_mean*nn.Softmax(-1)(self.layer(x.unsqueeze(-1))),dim=-1)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.88 GiB (GPU 0; 23.52 GiB total capacity; 20.36 GiB already allocated; 1.61 GiB free; 21.44 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

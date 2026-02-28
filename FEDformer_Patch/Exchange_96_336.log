@@ -1,0 +1,138 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=8, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='exchange_rate.csv', dec_in=8, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=8, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=3, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=336, root_path='./dataset/exchange_rate/', seq_len=96, stride=8, target='OT', task_id='Exchange', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+PatchEmbedding: seq_len=96, patch_len=16, stride=8
+PatchEmbedding: num_patch=11, pad_len=0
+模型配置: patch_len=16, stride=8, num_patch=11
+Fourier modes: 5
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4880
+val 425
+test 1182
+Epoch: 1 cost time: 5.593717336654663
+Epoch: 1, Steps: 152 | Train Loss: 0.7005224 Vali Loss: 1.8437825 Test Loss: 0.6297122
+Validation loss decreased (inf --> 1.843783).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 4.362238883972168
+Epoch: 2, Steps: 152 | Train Loss: 0.4454827 Vali Loss: 1.2623656 Test Loss: 0.3665831
+Validation loss decreased (1.843783 --> 1.262366).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 4.339468002319336
+Epoch: 3, Steps: 152 | Train Loss: 0.4214252 Vali Loss: 1.0846997 Test Loss: 0.3382360
+Validation loss decreased (1.262366 --> 1.084700).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 4.280430316925049
+Epoch: 4, Steps: 152 | Train Loss: 0.4159898 Vali Loss: 1.0328505 Test Loss: 0.3252201
+Validation loss decreased (1.084700 --> 1.032851).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 4.246283769607544
+Epoch: 5, Steps: 152 | Train Loss: 0.4137062 Vali Loss: 1.1499281 Test Loss: 0.3371288
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 4.283303737640381
+Epoch: 6, Steps: 152 | Train Loss: 0.4116736 Vali Loss: 1.1291379 Test Loss: 0.3346693
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 3.125e-06
+Epoch: 7 cost time: 4.332736015319824
+Epoch: 7, Steps: 152 | Train Loss: 0.4112277 Vali Loss: 1.1444025 Test Loss: 0.3365454
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1182
+test shape: (36, 32, 336, 8) (36, 32, 336, 8)
+test shape: (1152, 336, 8) (1152, 336, 8)
+mse:0.3252200186252594, mae:0.43529078364372253
+Use GPU: cuda:0
+PatchEmbedding: seq_len=96, patch_len=16, stride=8
+PatchEmbedding: num_patch=11, pad_len=0
+模型配置: patch_len=16, stride=8, num_patch=11
+Fourier modes: 5
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_1>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4880
+val 425
+test 1182
+Epoch: 1 cost time: 4.295504331588745
+Epoch: 1, Steps: 152 | Train Loss: 0.7585673 Vali Loss: 1.9158657 Test Loss: 0.6727635
+Validation loss decreased (inf --> 1.915866).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 4.2667014598846436
+Epoch: 2, Steps: 152 | Train Loss: 0.4533403 Vali Loss: 1.3178203 Test Loss: 0.3750974
+Validation loss decreased (1.915866 --> 1.317820).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 4.272027015686035
+Epoch: 3, Steps: 152 | Train Loss: 0.4247479 Vali Loss: 1.3122731 Test Loss: 0.3675588
+Validation loss decreased (1.317820 --> 1.312273).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 4.337273836135864
+Epoch: 4, Steps: 152 | Train Loss: 0.4193292 Vali Loss: 1.1270516 Test Loss: 0.3334773
+Validation loss decreased (1.312273 --> 1.127052).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 4.260571479797363
+Epoch: 5, Steps: 152 | Train Loss: 0.4166172 Vali Loss: 1.0962751 Test Loss: 0.3317369
+Validation loss decreased (1.127052 --> 1.096275).  Saving model ...
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 4.240913391113281
+Epoch: 6, Steps: 152 | Train Loss: 0.4155143 Vali Loss: 1.1823634 Test Loss: 0.3425240
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 3.125e-06
+Epoch: 7 cost time: 4.210300922393799
+Epoch: 7, Steps: 152 | Train Loss: 0.4144175 Vali Loss: 1.1416823 Test Loss: 0.3369164
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 1.5625e-06
+Epoch: 8 cost time: 4.291167259216309
+Epoch: 8, Steps: 152 | Train Loss: 0.4143485 Vali Loss: 1.1701759 Test Loss: 0.3399361
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_1<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1182
+test shape: (36, 32, 336, 8) (36, 32, 336, 8)
+test shape: (1152, 336, 8) (1152, 336, 8)
+mse:0.33173689246177673, mae:0.4413759410381317
+Use GPU: cuda:0
+PatchEmbedding: seq_len=96, patch_len=16, stride=8
+PatchEmbedding: num_patch=11, pad_len=0
+模型配置: patch_len=16, stride=8, num_patch=11
+Fourier modes: 5
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_2>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 4880
+val 425
+test 1182
+Epoch: 1 cost time: 4.308509588241577
+Epoch: 1, Steps: 152 | Train Loss: 0.7586417 Vali Loss: 1.9201671 Test Loss: 0.6730354
+Validation loss decreased (inf --> 1.920167).  Saving model ...
+Updating learning rate to 0.0001
+Epoch: 2 cost time: 4.289654493331909
+Epoch: 2, Steps: 152 | Train Loss: 0.4542982 Vali Loss: 1.2572410 Test Loss: 0.3667623
+Validation loss decreased (1.920167 --> 1.257241).  Saving model ...
+Updating learning rate to 5e-05
+Epoch: 3 cost time: 4.247889757156372
+Epoch: 3, Steps: 152 | Train Loss: 0.4251514 Vali Loss: 1.1856639 Test Loss: 0.3487804
+Validation loss decreased (1.257241 --> 1.185664).  Saving model ...
+Updating learning rate to 2.5e-05
+Epoch: 4 cost time: 4.255935430526733
+Epoch: 4, Steps: 152 | Train Loss: 0.4192998 Vali Loss: 1.0706506 Test Loss: 0.3297728
+Validation loss decreased (1.185664 --> 1.070651).  Saving model ...
+Updating learning rate to 1.25e-05
+Epoch: 5 cost time: 4.234944581985474
+Epoch: 5, Steps: 152 | Train Loss: 0.4166948 Vali Loss: 1.1509073 Test Loss: 0.3378451
+EarlyStopping counter: 1 out of 3
+Updating learning rate to 6.25e-06
+Epoch: 6 cost time: 4.251114130020142
+Epoch: 6, Steps: 152 | Train Loss: 0.4151511 Vali Loss: 1.1761979 Test Loss: 0.3421109
+EarlyStopping counter: 2 out of 3
+Updating learning rate to 3.125e-06
+Epoch: 7 cost time: 4.217263698577881
+Epoch: 7, Steps: 152 | Train Loss: 0.4149701 Vali Loss: 1.1631109 Test Loss: 0.3390966
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : Exchange_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl336_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_2<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 1182
+test shape: (36, 32, 336, 8) (36, 32, 336, 8)
+test shape: (1152, 336, 8) (1152, 336, 8)
+mse:0.3297727406024933, mae:0.43885621428489685

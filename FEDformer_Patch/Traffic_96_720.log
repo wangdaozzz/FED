@@ -1,0 +1,45 @@
+Args in experiment:
+Namespace(L=3, activation='gelu', base='legendre', batch_size=32, c_out=862, checkpoints='./checkpoints/', cross_activation='tanh', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='traffic.csv', dec_in=862, des='Exp', detail_freq='h', devices='0,1', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=862, factor=3, features='M', freq='h', gpu=0, is_training=1, itr=3, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mode_select='random', model='FEDformer_Patch', modes=64, moving_avg=[24], n_heads=8, num_workers=10, output_attention=False, patch_len=16, patience=3, pred_len=720, root_path='./dataset/traffic/', seq_len=96, stride=8, target='OT', task_id='traffic', train_epochs=3, use_amp=False, use_gpu=True, use_multi_gpu=False, version='Fourier')
+Use GPU: cuda:0
+PatchEmbedding: seq_len=96, patch_len=16, stride=8
+PatchEmbedding: num_patch=11, pad_len=0
+模型配置: patch_len=16, stride=8, num_patch=11
+Fourier modes: 5
+fourier enhanced block used!
+modes=5, index=[0, 1, 2, 3, 4]
+>>>>>>>start training : traffic_FEDformer_Patch_random_modes64_custom_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 11465
+val 1037
+test 2789
+Traceback (most recent call last):
+  File "run.py", line 175, in <module>
+    main()
+  File "run.py", line 139, in main
+    exp.train(setting)
+  File "/home/gzx/FEDformer-master/exp/exp_main.py", line 143, in train
+    outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/models/FEDformer_Patch.py", line 141, in forward
+    enc_out, attns = self.encoder(enc_out, attn_mask=enc_self_mask)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 140, in forward
+    x, attn = attn_layer(x, attn_mask=attn_mask)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 111, in forward
+    x, _ = self.decomp1(x)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 67, in forward
+    moving_avg = func(x)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/FEDformer-master/layers/Autoformer_EncDec.py", line 36, in forward
+    x = self.avg(x.permute(0, 2, 1))
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/gzx/.conda/envs/sst/lib/python3.8/site-packages/torch/nn/modules/pooling.py", line 559, in forward
+    return F.avg_pool1d(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB (GPU 0; 23.52 GiB total capacity; 22.66 GiB already allocated; 166.62 MiB free; 22.88 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

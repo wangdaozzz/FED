@@ -38,12 +38,7 @@ class Model(nn.Module):
         # ==================== Patch参数 ====================
         self.patch_len = getattr(configs, 'patch_len', 16)
         self.stride = getattr(configs, 'stride', 8)
-        # ==================== 1. RevIN (创新点1) ====================
-        self.revin = RevIN(
-            num_features=configs.enc_in,
-            affine=True,
-            subtract_last=False
-        )
+
         # ==================== Patch Embedding（新增） ====================
         # 注意：num_patch由PatchEmbedding内部计算
         self.patch_embedding = PatchEmbedding(
@@ -121,7 +116,7 @@ class Model(nn.Module):
         return: [Batch, Pred_len, Num_variables]
         """
         B, L, N = x_enc.shape
-        x_enc = self.revin(x_enc, mode='norm')
+
         # ==================== Step 1: 序列分解 ====================
         # seasonal_init: [B, L, N], trend_init: [B, L, N]
         seasonal_init, trend_init = self.decomp(x_enc)
@@ -156,8 +151,7 @@ class Model(nn.Module):
         # ==================== Step 8: 合并趋势和季节项 ====================
         dec_out = seasonal_out + trend_out
 
-        # ==================== Step 9: 反归一化 ====================
-        dec_out = self.revin(dec_out, mode='denorm')
+
 
         if self.output_attention:
             return dec_out, attns
